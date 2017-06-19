@@ -36,7 +36,6 @@ build:
 #                name: pthon test
 #                code: |
 #                python app_test.py
-box: busybox
 push-to-ecr:
   steps:
     - internal/docker-push:
