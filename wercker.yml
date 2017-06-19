@@ -42,5 +42,5 @@ push-to-ecr:
         aws-access-key: $AWS_ACCESS_KEY_ID
         aws-secret-key: $AWS_SECRET_ACCESS_KEY
         aws-region: $AWS_REGION
-        aws-registry-id: $AWS_REGISTRY_ID
+        aws-registry-id: sachinapatil@gmail.com
         repository: sachindocker                
