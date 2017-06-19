@@ -14,22 +14,15 @@ dev:
 build:
   # The steps that will be executed on build
   steps:
-    - script:
-            name: Exporting proxy
-            code: |
-              # Start xvfb which gives the context an virtual display
-              # which is required for tests that require an GUI
-              export http_proxy=http://www-proxy.us.oracle.com:80
-              export https_proxy=http://www-proxy.us.oracle.com:80  
     # A step that executes `pip install` command
     - pip-install
 
     # A custom script step, name value is used in the UI
     # and the code value contains the command that get executed
-#    - script:
-#        name: python unit test
-#        code: |
-#          python app_test.py
+    - script:
+        name: python unit test
+        code: |
+          python app_test.py
 #test:
 #        # The steps that will be executed on build
 #        step:
