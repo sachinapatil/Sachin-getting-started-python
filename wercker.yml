@@ -23,19 +23,15 @@ build:
         name: python unit test
         code: |
           python app_test.py
-#test:
+
+stag-test:
 #        # The steps that will be executed on build
-#        step:
-#        - script:
-#                name: Export_Proxy
-#                code: |
-#                export http_proxy=http://www-proxy.us.oracle.com:80
-#                export https_proxy=http://www-proxy.us.oracle.com:80
-#        - pip-install
-#        - script:
-#                name: pthon test
-#                code: |
-#                python app_test.py
+  step:
+     - script:
+           name: pthon test
+           code: |
+                python app_test.py
+
 push-to-ecr:
   steps:
     - internal/docker-push:
