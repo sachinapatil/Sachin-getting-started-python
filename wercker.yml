@@ -1,0 +1,45 @@
+box: python:2.7-slim
+dev:
+  steps:
+    - script:
+           name: Exporting_proxy    
+           code: |
+                export http_proxy=http://www-proxy.us.oracle.com:80
+                export https_proxy=http://www-proxy.us.oracle.com:80
+    - pip-install
+    - internal/watch:
+        code: python app.py
+        reload: true
+# Build definition
+build:
+  # The steps that will be executed on build
+  steps:
+    - script:
+            name: Exporting proxy
+            code: |
+              # Start xvfb which gives the context an virtual display
+              # which is required for tests that require an GUI
+              export http_proxy=http://www-proxy.us.oracle.com:80
+              export https_proxy=http://www-proxy.us.oracle.com:80  
+    # A step that executes `pip install` command
+    - pip-install
+
+    # A custom script step, name value is used in the UI
+    # and the code value contains the command that get executed
+#    - script:
+#        name: python unit test
+#        code: |
+#          python app_test.py
+#test:
+#        # The steps that will be executed on build
+#        step:
+#        - script:
+#                name: Export_Proxy
+#                code: |
+#                export http_proxy=http://www-proxy.us.oracle.com:80
+#                export https_proxy=http://www-proxy.us.oracle.com:80
+#        - pip-install
+#        - script:
+#                name: pthon test
+#                code: |
+#                python app_test.py
